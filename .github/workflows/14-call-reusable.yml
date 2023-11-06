@@ -1,0 +1,16 @@
+name: call reusable
+
+on:
+    push:
+        branches: 
+            - main
+
+jobs:
+    fist-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: first step
+              run: echo "fist step"
+    deploy:
+        needs: fist-job
+        uses: ./.github/workflows/14-reusable.yml
