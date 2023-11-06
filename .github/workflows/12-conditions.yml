@@ -48,9 +48,14 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-latest
+    outputs:
+        cache: ${{ steps.cache.outputs.cache }}
     steps:
       - name: Get code
         uses: actions/checkout@v3
+      - name: my fake cache
+        id: cache
+        run: echo "cache=mycache" >> "$GITHUB_OUTPUT"
     #   - name: Cache dependencies
     #     id: cache
     #     uses: actions/cache@v3
@@ -58,6 +63,7 @@ jobs:
     #       path: ~/.npm
     #       key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
+        if: ${{ steps.cache.outputs.cache }} == 'mycache'
         run: echo "npm ci"
       - name: Build website
         id: build-website
