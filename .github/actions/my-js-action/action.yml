@@ -1,5 +1,12 @@
 name: 'My JavaScript action'
 description: 'Funky JavaScript action'
+inputs:
+  name:
+    description: your name
+    required: true
+  age:
+    description: your age
+    required: true
 runs:
   using: node20
   main: main.js
