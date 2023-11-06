@@ -63,7 +63,7 @@ jobs:
     #       path: ~/.npm
     #       key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
-        if: ${{ steps.cache.outputs.cache }} == 'mycache'
+        if: ${{ steps.cache.outputs.cache }} != 'mycache'
         run: echo "npm ci"
       - name: Build website
         id: build-website
