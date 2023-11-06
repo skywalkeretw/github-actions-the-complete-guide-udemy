@@ -4,10 +4,14 @@ on:
         branches: [ master ]
 jobs:
     build:
+        continue-on-error: true
         strategy:
           matrix:
             node-version: [16, 18, 20]
-
+            include:
+                - node-verion: 12
+            exclude:
+                - node-version: 14
         runs-on: ubuntu-latest
         steps:
             - name: Get Code
