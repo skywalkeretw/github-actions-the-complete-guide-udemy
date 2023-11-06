@@ -44,4 +44,4 @@ jobs:
       - name: ENV
         run: export
       - name: MY_SECRET
-        run: echo $MY_SECRET
+        run: echo "my secret => $MY_SECRET"
