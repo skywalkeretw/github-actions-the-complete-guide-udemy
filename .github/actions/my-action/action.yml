@@ -1,9 +1,12 @@
 name: 'My custom composite action'
 description: 'do some magic'
-
+inputs:
+  name:
+    description: "the value to greet"
+    required: true
 runs:
-  using: composite
+  using: 'composite'
   steps:
     - name: Hello
-      run: echo "Hello World"
+      run: echo "Hello ${{ inputs.name }}"
       shell: bash

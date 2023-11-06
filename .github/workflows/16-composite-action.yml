@@ -11,3 +11,5 @@ jobs:
         steps:
             - name: hello
               uses: ./.github/actions/my-action
+              with: 
+                name: Luke
