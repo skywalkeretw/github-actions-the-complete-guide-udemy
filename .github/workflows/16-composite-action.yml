@@ -31,3 +31,12 @@ jobs:
                 age: 2345
             - name: js out
               run: echo ${{ steps.js.outputs.username }}
+
+    docker:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Get Code
+          uses: actions/checkout@v2
+          id: docker
+        - name: js out
+          run: echo ${{ steps.docker.outputs.username }}

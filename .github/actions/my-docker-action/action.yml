@@ -1,0 +1,15 @@
+name: 'my docker action'
+description: 'my docker action'
+inputs:
+  name:
+    description: your name
+    required: true
+  age:
+    description: your age
+    required: true
+outputs:
+  username:
+    description: your username
+runs:
+  using: docker
+  image: Dockerfile
