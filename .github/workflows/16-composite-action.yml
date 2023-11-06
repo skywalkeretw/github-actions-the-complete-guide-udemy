@@ -18,3 +18,10 @@ jobs:
                 name: Luke
             - name: outval
               run: echo ${{ steps.hello.outputs.out }}
+    js:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get Code
+              uses: actions/checkout@v2
+            - name: JS Action
+              uses: ./.github/actions/my-js-action
