@@ -1,0 +1,9 @@
+name: 'My custom composite action'
+description: 'do some magic'
+
+runs:
+  using: composite
+  steps:
+    - name: Hello
+      run: echo "Hello World"
+      shell: bash
