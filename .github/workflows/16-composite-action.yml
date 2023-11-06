@@ -12,6 +12,9 @@ jobs:
             - name: Get Code
               uses: actions/checkout@v2
             - name: hello
+              id: hello
               uses: ./.github/actions/my-action
               with: 
                 name: Luke
+            - name: outval
+              run: echo ${{ steps.hello.outputs.out }}
