@@ -7,6 +7,7 @@ function run() {
     yourage = core.getInput('age', {required: true})
     exec.exec('echo "from my js code"')
     core.notice("hello " + yourname + " your age is: " +yourage)
+    core.setOutput("username",yourname+yourage)
 }
 
 run()

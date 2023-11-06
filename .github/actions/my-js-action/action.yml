@@ -7,6 +7,9 @@ inputs:
   age:
     description: your age
     required: true
+outputs:
+  username:
+    description: your username
 runs:
   using: node20
   main: main.js
