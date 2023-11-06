@@ -1,0 +1,16 @@
+name: event
+
+on:
+  pull_request:
+    types:
+      - opened
+  push:
+  
+  workflow_dispatch:
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: echo Hello, world!
