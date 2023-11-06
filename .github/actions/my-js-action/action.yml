@@ -1,0 +1,5 @@
+name: 'My JavaScript action'
+description: 'Funky JavaScript action'
+runs:
+  using: node20
+  main: main.js
