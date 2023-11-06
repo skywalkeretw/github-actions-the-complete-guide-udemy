@@ -15,7 +15,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     outputs:
-      script-file: ${{ steps.publish.script-file}}
+      script-file: ${{ steps.publish.script-file }}
     steps:
       - name: Get code
         uses: actions/checkout@v3
@@ -35,7 +35,7 @@ jobs:
             dist
       - name: working with outputs
         id: publish
-        run: echo "script-file=file.txt" >> $GITHUB_OUTPUT
+        run: echo "script-file=file.txt" >> $GITHUB_OUTPUT;
       
   deploy:
     needs: build
