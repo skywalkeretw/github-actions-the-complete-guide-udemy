@@ -64,7 +64,7 @@ jobs:
     #       key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         if: ${{ steps.cache.outputs.cache }} != 'mycache'
-        run: echo "npm ci"
+        run: echo "npm ci ${{ steps.cache.outputs.cache }}"
       - name: Build website
         id: build-website
         run: echo "npm run build"
