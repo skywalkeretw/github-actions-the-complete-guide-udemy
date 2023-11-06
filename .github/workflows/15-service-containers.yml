@@ -16,4 +16,4 @@ jobs:
                 
         steps:
             - name: hello
-              run: curl localhost:8080
+              run: curl nginx:8080
