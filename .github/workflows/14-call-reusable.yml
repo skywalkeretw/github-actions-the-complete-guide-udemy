@@ -6,11 +6,17 @@ on:
             - master
 
 jobs:
+   
     fist-job:
         runs-on: ubuntu-latest
         steps:
             - name: first step
               run: echo "fist step"
     deploy:
+        strategy:
+            matrix:
+                name: [luke, world, cat]
         needs: fist-job
         uses: ./.github/workflows/14-reusable.yml
+        with:
+            name: ${{ matrix.name }}

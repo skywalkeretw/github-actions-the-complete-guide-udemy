@@ -1,11 +1,16 @@
 name: Reusable Deploy
 
 on:
-    workflow_call: 
-
+    workflow_call:
+        inputs:
+            name:
+                description: your name
+                required: false
+                default: World
+                type: string
 jobs:
     deploy:
         runs-on: ubuntu-latest
         steps:
             - name: Output 
-              run: echo "Hello, world!"
+              run: echo "Hello, ${{ inputs.name }}!"
