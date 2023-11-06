@@ -4,7 +4,20 @@ on:
   pull_request:
     types:
       - opened
+    branches:
+      - master
+      - 'dev-*' #dev-new
+      - 'feat/**' #feat/new/btton
+
   push:
+    branches:
+      - master
+      - 'dev-*' #dev-new
+      - 'feat/**' #feat/new/btton
+    branches-ignore:
+      - 'test*'
+    paths-ignore:
+      - 'mypath/*'
   
   workflow_dispatch:
 
