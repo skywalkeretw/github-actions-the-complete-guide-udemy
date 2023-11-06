@@ -1,0 +1,85 @@
+name: Website Deployment
+on:
+  push:
+    branches:
+      - master
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+    #   - name: Cache dependencies
+    #     id: cache
+    #     uses: actions/cache@v3
+    #     with:
+    #       path: ~/.npm
+    #       key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        run: npm ci
+      - name: echo "Lint code"
+        run: echo "npm run lint"
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+    #   - name: Cache dependencies
+    #     id: cache
+    #     uses: actions/cache@v3
+    #     with:
+    #       path: ~/.npm
+    #       key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        run: echo "npm ci"
+      - name: Test code
+        run: echo "npm run test"
+      - name: create report
+        run: |
+            touch test.json
+            echo "{'key':'value'}" > test.json
+      - name: Upload test report
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          path: test.json
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+    #   - name: Cache dependencies
+    #     id: cache
+    #     uses: actions/cache@v3
+    #     with:
+    #       path: ~/.npm
+    #       key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        run: echo "npm ci"
+      - name: Build website
+        id: build-website
+        run: eco "npm run build"
+      - name: creat dist
+        run: |
+            mkdir dist
+            touch dist/file.txt
+            touch dist/file4.txt
+            touch dist/file3.txt
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-files
+          path: dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-files
+      - name: Output contents
+        run: ls
+      - name: Deploy
+        run: echo "Deploying..."
