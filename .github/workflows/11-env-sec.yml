@@ -4,8 +4,15 @@ on:
     branches:
       - master
       - dev
+
+env:
+  DB_NAME: my-db
+
 jobs:
   test:
+    env:
+      TEST_ENV: "only in test"
+
     environment: testing
     runs-on: ubuntu-latest
     steps:
@@ -33,3 +40,5 @@ jobs:
       - name: Output information
         run: |        
           echo "..."
+      - name: ENV
+        run: export
