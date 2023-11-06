@@ -11,9 +11,19 @@ on:
         secrets:
             some-secret:
                 required: false
+        outputs:
+            result:
+                description: my return value
+                value: ${{ jobs.deploy.outputs.result }}
+                
 jobs:
     deploy:
+        outputs:
+            result: ${{ steps.result.outputs.result }}
         runs-on: ubuntu-latest
         steps:
             - name: Output 
               run: echo "Hello, ${{ inputs.name }}!"
+            - name: return 
+              id: result
+              run: echo "result=Hello, ${{ inputs.name }}!" >> "$GITHUB_OUTPUT"
