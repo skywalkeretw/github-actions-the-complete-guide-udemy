@@ -8,6 +8,9 @@ on:
                 required: false
                 default: World
                 type: string
+        secrets:
+            some-secret:
+                required: false
 jobs:
     deploy:
         runs-on: ubuntu-latest
