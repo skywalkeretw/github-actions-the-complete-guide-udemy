@@ -1,0 +1,14 @@
+name: 15 containers
+
+on:
+    push:
+        branches: 
+            - master
+
+jobs:
+    first:
+        runs-on: ubuntu-latest
+        container: golang:1.21
+        steps:
+            - name: hello
+              run: go version
