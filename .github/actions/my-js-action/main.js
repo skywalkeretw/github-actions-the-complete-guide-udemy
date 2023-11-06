@@ -1,6 +1,6 @@
-const core = reqire('@actions/core')
-const github = reqire('@actions/github')
-const exec = reqire('@actions/exec')
+const core = require('@actions/core');
+const github = require('@actions/github')
+const exec = require('@actions/exec')
 
 function run() {
     core.notice("hello from nodej")
