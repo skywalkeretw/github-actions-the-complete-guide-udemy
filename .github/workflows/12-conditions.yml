@@ -35,10 +35,12 @@ jobs:
       - name: Test code
         run: echo "npm run test"
       - name: create report
+        id: create-report
         run: |
             touch test.json
             echo "{'key':'value'}" > test.json
       - name: Upload test report
+        if: steps.create-report.outcome == 'failure'
         uses: actions/upload-artifact@v3
         with:
           name: test-report
