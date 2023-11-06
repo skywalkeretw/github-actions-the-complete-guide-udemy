@@ -63,7 +63,7 @@ jobs:
     #       path: ~/.npm
     #       key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
-        if: ${{ steps.cache.outputs.cache }} == 'asdf'
+        if: steps.cache.outputs.cache == 'asdf'
         run: echo "npm ci ${{ steps.cache.outputs.cache }}"
       - name: Build website
         id: build-website
