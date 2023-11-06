@@ -16,7 +16,7 @@ jobs:
     #       path: ~/.npm
     #       key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
-        run: npm ci
+        run: echo "npm ci"
       - name: echo "Lint code"
         run: echo "npm run lint"
   test:
@@ -59,7 +59,7 @@ jobs:
         run: echo "npm ci"
       - name: Build website
         id: build-website
-        run: eco "npm run build"
+        run: echo "npm run build"
       - name: creat dist
         run: |
             mkdir dist
