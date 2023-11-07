@@ -1,0 +1,30 @@
+name: 16 composite
+
+on:
+    push:
+        branches: 
+            - master
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get Code
+              uses: actions/checkout@v2
+            - name: hello
+              id: hello
+              uses: ./.github/actions/my-env
+              with: 
+                in: |
+                    'asdf'
+                    'lol'
+                    'three'
+            - name: hello
+              id: lol
+              uses: ./.github/actions/my-env
+              with: 
+                in: 'one'
+            
+            - name: outval
+              run: echo ${{ steps.hello.outputs.out }}
+

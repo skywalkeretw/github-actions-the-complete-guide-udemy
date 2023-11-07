@@ -1,0 +1,25 @@
+name: 'My custom composite action with env'
+description: 'testing env'
+
+inputs:
+  in:
+    description: "the value to greet"
+    required: false
+
+outputs:
+  out:
+    description: output
+    value: ${{ steps.out.outputs.out }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Loop through environment variables
+      shell: bash
+      run: |
+        IFS=$'\n' # Set the Internal Field Separator to newline
+        INPUT_VALUES=(${{ inputs.in }}) # Split input values by newline
+        for value in "${INPUT_VALUES[@]}"; do
+          echo "Processing value: $value"
+          # Perform your action for each value here
+        done
