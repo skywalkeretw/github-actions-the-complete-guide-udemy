@@ -23,11 +23,11 @@ runs:
       run: |
      
         if [[ "${{ inputs.cpu }}" != "" ]] ; then
-          echo "cpu = "
+          echo "cpu=--cpu ${{ inputs.cpu }}" >> "$GITHUB_OUTPUT"
         else
           echo "inputs.cpu is empty"
+          echo "cpu=" >> "$GITHUB_OUTPUT"
         fi
-        echo "cpu=--cpu ${{ inputs.cpu }}" >> "$GITHUB_OUTPUT"
 
         IFS=$'\n' # Set the Internal Field Separator to newline
         INPUT_VALUES=(${{ inputs.in }}) # Split input values by newline
@@ -39,4 +39,4 @@ runs:
     - name: step 2
       shell: bash
       run: |
-        echo ${{ steps.res.outputs.cpu }}
+        echo "value is: ${{ steps.res.outputs.cpu }}"
