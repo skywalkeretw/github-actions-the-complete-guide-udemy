@@ -11,6 +11,15 @@ jobs:
         steps:
             - name: Get Code
               uses: actions/checkout@v2
+            - name: hello1
+              id: hello1
+              uses: ./.github/actions/my-env
+              with: 
+                in: |
+                    'asdf'
+                    'lol'
+                    'three'
+
             - name: hello
               id: hello
               uses: ./.github/actions/my-env
@@ -19,6 +28,7 @@ jobs:
                     'asdf'
                     'lol'
                     'three'
+                cpu: 1
             - name: hello
               id: lol
               uses: ./.github/actions/my-env
