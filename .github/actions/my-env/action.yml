@@ -19,13 +19,16 @@ runs:
   steps:
     - name: Loop through environment variables
       shell: bash
+      id: res
       run: |
-        
+        CPU-STRING=""
         if [[ "${{ inputs.cpu }}" != "" ]] ; then
-          echo "cpu = ${{ inputs.cpu }}"
+          CPU-STRING="--cpu ${{ inputs.cpu }}"
+          echo "cpu = "
         else
           echo "inputs.cpu is empty"
         fi
+        echo "cpu=$CPU_STRING" >> "$GITHUB_OUTPUT"
 
         IFS=$'\n' # Set the Internal Field Separator to newline
         INPUT_VALUES=(${{ inputs.in }}) # Split input values by newline
@@ -33,3 +36,8 @@ runs:
           echo "Processing value: $value"
           # Perform your action for each value here
         done
+
+    - name: step 2
+      shell: bash
+      run: |
+        echo ${{ steps.res.outputs.cpu }}
