@@ -20,7 +20,12 @@ runs:
     - name: Loop through environment variables
       shell: bash
       run: |
-        echo "cpu = ${{ inputs.cpu }}"
+        
+        if [[ "${{ inputs.cpu }}" != "" ]] ; then
+          echo "cpu = ${{ inputs.cpu }}"
+        else
+          echo "inputs.cpu is empty"
+        fi
 
         IFS=$'\n' # Set the Internal Field Separator to newline
         INPUT_VALUES=(${{ inputs.in }}) # Split input values by newline
