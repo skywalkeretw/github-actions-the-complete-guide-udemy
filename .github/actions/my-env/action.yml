@@ -21,14 +21,13 @@ runs:
       shell: bash
       id: res
       run: |
-        CPU-STRING=""
+     
         if [[ "${{ inputs.cpu }}" != "" ]] ; then
-          CPU-STRING="--cpu ${{ inputs.cpu }}"
           echo "cpu = "
         else
           echo "inputs.cpu is empty"
         fi
-        echo "cpu=$CPU_STRING" >> "$GITHUB_OUTPUT"
+        echo "cpu=--cpu ${{ inputs.cpu }}" >> "$GITHUB_OUTPUT"
 
         IFS=$'\n' # Set the Internal Field Separator to newline
         INPUT_VALUES=(${{ inputs.in }}) # Split input values by newline
